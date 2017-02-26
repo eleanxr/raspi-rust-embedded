@@ -1,5 +1,14 @@
 [target.thumbv7m-none-eabi]
 rustflags = [
-    "-C", "link-arg=-Tlayout.ld",
+    "-C", "link-arg=-Tld/layout.ld",
+    "-C", "link-arg=-nostartfiles",
+]
+
+# Raspberry Pi
+[target.arm-unknown-linux-gnueabihf]
+rustflags = [
+    "-C", "linker=arm-none-eabi-gcc",
+    "-C", "ar=arm-none-eabi-ar",
+    "-C", "link-arg=-Tld/raspi.ld",
     "-C", "link-arg=-nostartfiles",
 ]
